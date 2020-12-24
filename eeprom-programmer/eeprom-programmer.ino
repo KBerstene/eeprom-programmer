@@ -89,7 +89,7 @@ void setup() {
   pinMode(SHIFT_LATCH, OUTPUT);
   digitalWrite(WRITE_EN, HIGH);
   pinMode(WRITE_EN, OUTPUT);
-  Serial.begin(57600);
+  Serial.begin(9600);
 
   // Erase entire EEPROM
   Serial.print("Erasing EEPROM");
