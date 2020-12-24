@@ -9,6 +9,15 @@
 #define EEPROM_D7 12
 #define WRITE_EN 13
 
+#define A 0b10000000
+#define B 0b01000000
+#define C 0b00100000
+#define D 0b00010000
+#define E 0b00001000
+#define F 0b00000100
+#define G 0b00000010
+#define H 0b00000001
+
 /*
    Output the address bits and outputEnable signal using shift registers.
 */
@@ -91,17 +100,16 @@ void setup() {
 
   // Bit patterns for the digits 0..9
   byte digits[] = {
-  //0bABCDEFGH
-    0b01111110,
-    0b00110000,
-    0b01101101,
-    0b01111001,
-    0b00110011,
-    0b01011011,
-    0b01011111,
-    0b01110000,
-    0b01111111,
-    0b01111011
+      B|C|D|E|F|G  ,
+        C|D        ,
+      B|C|  E|F|  H,
+      B|C|D|E|    H,
+        C|D|    G|H,
+      B|  D|E|  G|H,
+      B|  D|E|F|G|H,
+      B|C|D        ,
+      B|C|D|E|F|G|H,
+      B|C|D|E|  G|H
   };
 
   // For reference:
