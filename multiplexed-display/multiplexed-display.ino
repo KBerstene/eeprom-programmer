@@ -9,14 +9,14 @@
 #define EEPROM_D7 12
 #define WRITE_EN 13
 
-#define A 0b10000000
-#define B 0b01000000
-#define C 0b00100000
-#define D 0b00010000
-#define E 0b00001000
-#define F 0b00000100
-#define G 0b00000010
-#define H 0b00000001
+#define A 0b00000100
+#define B 0b00100000
+#define C 0b00010000
+#define D 0b00000010
+#define E 0b00000001
+#define F 0b00001000
+#define G 0b01000000
+#define H 0b10000000
 
 /*
    Output the address bits and outputEnable signal using shift registers.
@@ -155,7 +155,7 @@ void setup() {
   Serial.println("Programming sign (twos complement)");
   for (int value = -128; value <= 127; value += 1) {
     if (value < 0) {
-      writeEEPROM((byte)value + 1792, 0x01);
+      writeEEPROM((byte)value + 1792, H);
     } else {
       writeEEPROM((byte)value + 1792, 0);
     }
