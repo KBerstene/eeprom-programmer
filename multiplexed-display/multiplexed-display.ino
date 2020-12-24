@@ -91,6 +91,7 @@ void setup() {
 
   // Bit patterns for the digits 0..9
   byte digits[] = {
+  //0bABCDEFGH
     0b01111110,
     0b00110000,
     0b01101101,
@@ -102,6 +103,17 @@ void setup() {
     0b01111111,
     0b01111011
   };
+
+  // For reference:
+  //   --B--
+  //  |     |
+  //  G     C
+  //  |     |
+  //   --H--
+  //  |     |
+  //  F     D
+  //  |     |  A
+  //   --E--
 
   Serial.println("Programming ones place");
   for (int value = 0; value <= 255; value += 1) {
