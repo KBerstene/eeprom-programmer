@@ -129,11 +129,19 @@ void setup() {
   }
   Serial.println("Programming tens place");
   for (int value = 0; value <= 255; value += 1) {
-    writeEEPROM(value + 256, digits[(value / 10) % 10]);
+    if (value < 10) {
+      writeEEPROM(value + 256, 0);
+    } else {
+      writeEEPROM(value + 256, digits[(value / 10) % 10]);
+    }
   }
   Serial.println("Programming hundreds place");
   for (int value = 0; value <= 255; value += 1) {
-    writeEEPROM(value + 512, digits[(value / 100) % 10]);
+    if (value < 100) {
+      writeEEPROM(value + 512, 0);
+    } else {
+      writeEEPROM(value + 512, digits[(value / 100) % 10]);
+    }
   }
   Serial.println("Programming sign");
   for (int value = 0; value <= 255; value += 1) {
@@ -146,11 +154,19 @@ void setup() {
   }
   Serial.println("Programming tens place (twos complement)");
   for (int value = -128; value <= 127; value += 1) {
-    writeEEPROM((byte)value + 1280, digits[abs(value / 10) % 10]);
+    if ((value > -10) && (value < 10)) {
+      writeEEPROM((byte)value + 1280, 0);
+    } else {
+      writeEEPROM((byte)value + 1280, digits[abs(value / 10) % 10]);
+    }
   }
   Serial.println("Programming hundreds place (twos complement)");
   for (int value = -128; value <= 127; value += 1) {
-    writeEEPROM((byte)value + 1536, digits[abs(value / 100) % 10]);
+    if ((value > -100) && (value < 100)) {
+      writeEEPROM((byte)value + 1536, 0);
+    } else {
+      writeEEPROM((byte)value + 1536, digits[abs(value / 100) % 10]);
+    }
   }
   Serial.println("Programming sign (twos complement)");
   for (int value = -128; value <= 127; value += 1) {
